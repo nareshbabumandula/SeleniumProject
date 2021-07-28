@@ -31,6 +31,27 @@ public class LocatorsTest {
 		String strText = "Sample\nEmail\nContact Form";
 		strText = strText.replace("\n", Keys.chord(Keys.SHIFT, Keys.ENTER));
 		driver.findElement(By.xpath("//*[@id='q2']")).sendKeys(strText);
+		driver.findElement(By.xpath("//input[@*='q4']")).click();
+		driver.findElement(By.xpath("//input[@name='q11_first']/following::input")).sendKeys("Pattapu");
+		Thread.sleep(2000);
+		// Identifying a link based on linktext and partial linktext
+		driver.findElement(By.linkText("Detailed Contact Form")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.partialLinkText("Simple Web")).click();
+		
+		driver.findElement(By.cssSelector("input[id='q[1]']")).sendKeys("Seerath");
+		driver.findElement(By.cssSelector("input[id='email']")).sendKeys("seerath@gmail.com");
+		driver.findElement(By.cssSelector("input[id='email']")).clear();
+		driver.findElement(By.cssSelector("input#email")).sendKeys("rajani@yahoo.com");
+		driver.findElement(By.cssSelector("input.txt_log")).clear();
+		driver.findElement(By.cssSelector("input.txt_log")).sendKeys("Mounica");
+		driver.findElement(By.cssSelector("input[id^='use']")).clear();
+		driver.findElement(By.cssSelector("input[id^='use']")).sendKeys("Sheshu");
+		driver.findElement(By.cssSelector("input[id$='ser']")).clear();
+		driver.findElement(By.cssSelector("input[id^='use']")).sendKeys("Sheenu");
+		driver.findElement(By.cssSelector("input[type*='word']")).clear();
+		driver.findElement(By.cssSelector("input[type*='word']")).sendKeys("Swetha");
+				
 		Thread.sleep(3000);
 		driver.quit(); // Terminate the browser
 
