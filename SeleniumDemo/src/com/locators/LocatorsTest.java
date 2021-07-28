@@ -1,6 +1,7 @@
 package com.locators;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -25,7 +26,11 @@ public class LocatorsTest {
 		driver.findElement(By.xpath("//input[contains(@name,'email_to')][@value=1]")).click();
 		driver.findElement(By.xpath("//input[@id='subject' or @ name='subject']")).sendKeys("Test Subject");
 		driver.findElement(By.xpath("//input[@ID='email' and @NAME='email']")).sendKeys("Vishwada@gmail.com");
-		
+		boolean blnSubject = driver.findElement(By.xpath("//label[contains(text(),'Subject:')]")).isDisplayed();
+		System.out.println("Subject field label name display status is : " + blnSubject);
+		String strText = "Sample\nEmail\nContact Form";
+		strText = strText.replace("\n", Keys.chord(Keys.SHIFT, Keys.ENTER));
+		driver.findElement(By.xpath("//*[@id='q2']")).sendKeys(strText);
 		Thread.sleep(3000);
 		driver.quit(); // Terminate the browser
 
