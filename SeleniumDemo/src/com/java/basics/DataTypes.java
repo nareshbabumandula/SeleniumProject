@@ -36,6 +36,58 @@ public class DataTypes {
 		System.out.println(Byte.MIN_VALUE);
 		System.out.println(Byte.MAX_VALUE);
 		
+		/*Type casting: The process of converting one data type of another data type
+		In Java we have two types of type casting
+			1. Primitive data types type casting
+			2. User defined data types type casting
+		*
+		*	1. Primitive data types type casting
+		*		
+		*		i. Implicit type casting - lower to high data type (byte -> short -> int -> long -> float -> double)
+		*       ii. Explicit type casting
+		*/
+		
+		//i. Implicit type casting
+		byte b1 = 126;
+		short s1 = b1;
+		System.out.println("Converted the byte value to short value : " + s1);
+		System.out.println(b1 + " " + s1);
+		
+		/*int a1 = 100;
+		byte b2 = a1;
+		System.out.println(a1 + " " +b2);
+				
+		byte b3 = 62;
+		char c1 = b3;
+		System.out.println(b3 + " " + c3);
+		
+		byte b4 = 130;
+		System.out.println(b4);*/
+		
+		/*ii. Explicit type casting
+			To perform explicit type casting we have to use the following pattern
+			P a = (Q) b;
+			(Q) ---> Cast Operator and P and Q are primitive data types, where Q must be either same as P or lower than P as per
+			implicit type casting flow
+		*/
+		
+		int a5 = 130;
+		byte b5 = (byte)a5;
+		System.out.println(a5 + " " +b5);
+		
+		
+		int a1 = 130;
+		short b2 = (byte)a1;
+		System.out.println(a1 + " " +b2);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

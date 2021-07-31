@@ -1,27 +1,49 @@
 package com.locators;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class LocatorsTest {
+public class BrowserTest {
 
 	static WebDriver driver;
 
-	public static void main(String[] args) throws InterruptedException {
-
-		if (System.getProperty("os.name").contains("Windows")) {
+	public void launchBrowser(String strBrowser) throws InterruptedException {
+		
+		/*if (System.getProperty("os.name").contains("Windows")) {
 			System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver.exe");
 		}else if(System.getProperty("os.name").contains("Mac")) {
 			System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver");
-		}
+		}*/
 
-		System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver.exe");
-		driver = new ChromeDriver();
+		switch (strBrowser) {
+		case "ie":
+			System.setProperty("webdriver.ie.driver", "./browsers/IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+			break;
+		case "ff":
+			System.setProperty("webdriver.gecko.driver", "./browsers/geckodriver.exe");
+			driver = new FirefoxDriver();
+			break;
+		case "chrome":
+			System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver.exe");
+			driver = new ChromeDriver();
+			break;
+
+		default:
+			System.out.println("Invalid browser..!");
+			break;
+		}
+		
 		driver.get("https://www.mycontactform.com/samples.php");
 		driver.manage().window().maximize();
-
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); // Implicit wait
+		
 		// Locators
 		driver.findElement(By.id("user")).sendKeys("Seerath");
 		driver.findElement(By.name("pass")).sendKeys("Secure*1234");
@@ -60,6 +82,13 @@ public class LocatorsTest {
 
 		Thread.sleep(3000);
 		driver.quit(); // Terminate the browser
+
+	}
+
+	public static void main(String[] args) throws InterruptedException {
+
+		BrowserTest bt = new BrowserTest();
+		bt.launchBrowser("ff");
 
 	}
 
