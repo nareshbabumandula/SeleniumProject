@@ -32,7 +32,7 @@ public class DataTypes {
 		
 		/*Wrapper Classes are available for all primitives (byte, short, int, long, float, double, 
 		char, boolean)*/
-		
+
 		System.out.println(Byte.MIN_VALUE);
 		System.out.println(Byte.MAX_VALUE);
 		
@@ -81,13 +81,20 @@ public class DataTypes {
 		System.out.println(a1 + " " +b2);
 		
 		
+		//Non Primitive data types String, Array, Classes and Interfaces
+		String sText = "hello world";
+		System.out.println(sText.hashCode());
+				
+		int[] Marks = {10, 40, 50, 80, 90};
+		System.out.println(Marks[0]);
+		System.out.println(Marks[1]);
+		System.out.println(Marks[2]);
+		System.out.println(Marks.length);
+		//System.out.println(Marks[5]);
 		
-		
-		
-		
-		
-		
-		
+		String sText1 = null;
+		System.out.println(sText1.length());
+						
 	}
 
 }

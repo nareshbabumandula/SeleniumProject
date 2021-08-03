@@ -1,5 +1,6 @@
 package com.locators;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -9,29 +10,39 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.util.CommonUtility;
+
 public class BrowserTest {
 
 	static WebDriver driver;
+	static CommonUtility com = new CommonUtility();
 
-	public void launchBrowser(String strBrowser) throws InterruptedException {
-		
-		/*if (System.getProperty("os.name").contains("Windows")) {
-			System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver.exe");
-		}else if(System.getProperty("os.name").contains("Mac")) {
-			System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver");
-		}*/
+	public void launchBrowser(String strBrowser) throws InterruptedException, IOException {
+
 
 		switch (strBrowser) {
 		case "ie":
-			System.setProperty("webdriver.ie.driver", "./browsers/IEDriverServer.exe");
+			if (System.getProperty("os.name").contains("Windows")) {
+				System.setProperty("webdriver.chrome.driver", "./browsers/IEDriverServer.exe");
+			}else if(System.getProperty("os.name").contains("Mac")) {
+				System.setProperty("webdriver.ie.driver", "./browsers/IEDriverServer");
+			}
 			driver = new InternetExplorerDriver();
 			break;
 		case "ff":
-			System.setProperty("webdriver.gecko.driver", "./browsers/geckodriver.exe");
+			if (System.getProperty("os.name").contains("Windows")) {
+				System.setProperty("webdriver.gecko.driver", "./browsers/geckodriver.exe");
+			}else if(System.getProperty("os.name").contains("Mac")) {
+				System.setProperty("webdriver.gecko.driver", "./browsers/geckodriver");
+			}
 			driver = new FirefoxDriver();
 			break;
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver.exe");
+			if (System.getProperty("os.name").contains("Windows")) {
+				System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver.exe");
+			}else if(System.getProperty("os.name").contains("Mac")) {
+				System.setProperty("webdriver.chrome.driver", "./browsers/chromedriver");
+			}
 			driver = new ChromeDriver();
 			break;
 
@@ -39,11 +50,11 @@ public class BrowserTest {
 			System.out.println("Invalid browser..!");
 			break;
 		}
-		
-		driver.get("https://www.mycontactform.com/samples.php");
+		String appURL = com.getPropValue("appURL");
+		driver.get(appURL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); // Implicit wait
-		
+
 		// Locators
 		driver.findElement(By.id("user")).sendKeys("Seerath");
 		driver.findElement(By.name("pass")).sendKeys("Secure*1234");
@@ -79,16 +90,16 @@ public class BrowserTest {
 		driver.findElement(By.cssSelector("input[id^='use']")).sendKeys("Sheenu");
 		driver.findElement(By.cssSelector("input[type*='word']")).clear();
 		driver.findElement(By.cssSelector("input[type*='word']")).sendKeys("Swetha");
-
 		Thread.sleep(3000);
 		driver.quit(); // Terminate the browser
 
 	}
 
-	public static void main(String[] args) throws InterruptedException {
-
+	public static void main(String[] args) throws InterruptedException, IOException {
+		
+		String strBrowser = com.getPropValue("browserType");
 		BrowserTest bt = new BrowserTest();
-		bt.launchBrowser("ff");
+		bt.launchBrowser(strBrowser);
 
 	}
 
