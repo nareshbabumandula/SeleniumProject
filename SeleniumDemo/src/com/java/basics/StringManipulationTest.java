@@ -12,7 +12,7 @@ public class StringManipulationTest {
 		System.out.println("After : " + sText1.hashCode());
 		String sText2 = "WELCOME";
 		String sText3 = "core java";
-				
+					
 		System.out.println(sText1.length());
 		System.out.println(sText1.toUpperCase());
 		System.out.println(sText2.toLowerCase());
