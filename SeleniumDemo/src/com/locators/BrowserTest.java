@@ -60,6 +60,7 @@ public class BrowserTest {
 		driver.findElement(By.name("pass")).sendKeys("Secure*1234");
 		driver.findElement(By.id("user")).clear();
 		driver.findElement(By.className("txt_log")).sendKeys("Sheshu");
+		driver.findElement(By.linkText("Sample Forms")).click();
 		driver.findElement(By.xpath("//input[starts-with(@name,'email_to')]")).click();
 		driver.findElement(By.xpath("//input[contains(@name,'email_to')]")).click();
 		driver.findElement(By.xpath("//input[contains(@name,'email_to')][@value=1]")).click();

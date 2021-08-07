@@ -7,6 +7,7 @@ public class ScannerTest {
 	
 	public void scannerExample() {
 		
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the value of a");
 		int a = sc.nextInt();

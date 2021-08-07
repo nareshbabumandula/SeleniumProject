@@ -13,7 +13,8 @@ public class StringBufferTest {
 		System.out.println(sb.capacity());
 		System.out.println(sb.length());
 		System.out.println(sb.reverse());
-		
+		StringBuffer sb1 = new StringBuffer("123");
+		System.out.println(sb1.reverse());
 	}
 
 }
