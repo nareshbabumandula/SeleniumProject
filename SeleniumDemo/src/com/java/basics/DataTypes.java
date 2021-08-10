@@ -1,5 +1,7 @@
 package com.java.basics;
 
+import java.time.LocalDateTime;
+
 public class DataTypes {
 
 	// Java is statically typed programming language since the type checking happens at compile time
@@ -17,7 +19,8 @@ public class DataTypes {
 	
 	
 	public static void main(String[] args) {
-		
+		System.out.println(LocalDateTime.of(2021, 12, 06, 11, 30, 45));
+			
 		//Create an object reference for the class
 		// Syntax: Classname objRef = new Constructor();
 		DataTypes dt = new DataTypes();
@@ -92,8 +95,7 @@ public class DataTypes {
 		System.out.println(Marks.length);
 		//System.out.println(Marks[5]);
 		
-		String sText1 = null;
-		System.out.println(sText1.length());
+
 						
 	}
 
