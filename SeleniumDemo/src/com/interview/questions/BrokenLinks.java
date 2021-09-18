@@ -43,7 +43,7 @@ public class BrokenLinks {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://www.mycontactform.com/");  
-		driver.manage().window().maximize();
+		driver.manage().window().maximize(); // Maximize the browser window
 		
 		List<WebElement> links =driver.findElements(By.tagName("a"));
 		links.forEach((link)->System.out.println(link.getText()));
