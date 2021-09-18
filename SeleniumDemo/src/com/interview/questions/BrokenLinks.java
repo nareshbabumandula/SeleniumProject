@@ -26,7 +26,7 @@ public class BrokenLinks {
             httpURLConnect.connect();
             if(httpURLConnect.getResponseCode()>=400)
             {
-            	System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage()+"is a broken link");
+            	System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage()+ " is a broken link");
             }    
        
             //Fetching and Printing the response code obtained
