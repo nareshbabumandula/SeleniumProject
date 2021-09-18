@@ -18,8 +18,7 @@ public class BrokenLinks {
     {
         try
         {
-            URL url = new URL(linkUrl);
-
+            URL url = new URL(linkUrl); // Pass URL
             //Now we will be creating url connection and getting the response code
             HttpURLConnection httpURLConnect=(HttpURLConnection)url.openConnection();
             httpURLConnect.setConnectTimeout(5000);
