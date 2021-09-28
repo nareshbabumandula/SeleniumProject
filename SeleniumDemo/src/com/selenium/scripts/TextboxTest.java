@@ -43,10 +43,20 @@ public class TextboxTest {
 		// Enter data into the textbox
 		USERNAME.sendKeys("Swetha");
 		System.out.println("Actual value entered in username text field is  : " + USERNAME.getAttribute("value"));
-		Assert.assertEquals("Swetha", USERNAME.getAttribute("value"));
+		Assert.assertEquals("Swetha123", USERNAME.getAttribute("value"));
 		Reporter.log("Successfully validated the text field");
 		
 	}
+	
+	@Test
+    public void testMethod() {
+    	Assert.assertEquals("naresh", "sudheera");
+    	Assert.assertEquals('a', 'a');
+    	Assert.assertEquals('n', 's', "Expected char is not same a actual char");
+    	Assert.assertEquals(false, true);
+    	Assert.assertEquals(true, false, "Expected value is not same as actual value");
+    	
+    }
 
 
 	@AfterClass

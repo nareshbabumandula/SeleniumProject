@@ -46,9 +46,13 @@ public class ListboxTest {
 		
 		// Create an object for Select class in order to work with any dropdown listbox
 		Select select = new Select(dropdownBox);
-		select.selectByIndex(1); // Selects the 2nd item from the dropdown listbox
+		System.out.println("First selected option is : "+ select.getFirstSelectedOption().getText());
+		select.selectByIndex(1); // Selects the 2nd item from the dropdown listbox 
+		select.selectByIndex(0); // Selects the 1st item from the dropdown listbox 
 		select.selectByVisibleText("Fourth Option"); // Selects the item based on the text of the list of list item
-		
+		System.out.println("First selected option is : "+ select.getFirstSelectedOption().getText());
+	
+			
 		List<WebElement> items = select.getOptions();
 		
 		for (WebElement value : items) {

@@ -1,5 +1,6 @@
 package com.selenium.scripts;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -27,22 +28,25 @@ public class CheckboxTest {
 		driver.manage().window().maximize(); // Maximize the browser window
 		
 		driver.findElement(By.linkText("Sample Forms")).click();
+
 		
-		WebElement chkMarketing = driver.findElement(By.name("email_to[]"));
+		WebElement chkMarketing = driver.findElement(By.xpath("//input[@name='email_to[]' and @value='0']"));
 		System.out.println("Type attribute value is : " + chkMarketing.getAttribute("type"));
 		System.out.println("Name attribute value is : " + chkMarketing.getAttribute("name"));
 		System.out.println("Value attribute value is : " + chkMarketing.getAttribute("value"));
-		System.out.println("Html tag name for the checkobox is : " + chkMarketing.getTagName());
+		System.out.println("Html tag name for the checkbox is : " + chkMarketing.getTagName());
 		
 	    System.out.println(chkMarketing.isDisplayed());
 		System.out.println(chkMarketing.isEnabled());
 		System.out.println("Checkbox selection status before is : " + chkMarketing.isSelected());
-		
 		// Select the checkbox
 		chkMarketing.click();
-		
 		System.out.println("Checkbox selection status after is : " + chkMarketing.isSelected());
 		
+		
+		List<WebElement> checkboxes = driver.findElements(By.name("email_to[]"));
+		System.out.println(checkboxes.size());
+		checkboxes.forEach((n)->n.click());
 		
 	}
 
