@@ -27,12 +27,13 @@ public class MenusTest {
 		driver.get("https://www.spicejet.com/"); // Load a new web page in the current browser window. 
 		driver.manage().window().maximize(); // Maximize the browser window
 		
-		WebElement addons = driver.findElement(By.linkText("ADD-ONS"));
+		WebElement addons = driver.findElement(By.linkText("Add-ons"));
 		
 		Actions action = new Actions(driver);
 		action.moveToElement(addons).perform(); // Hover the mouse on Add-Ons tab
-		driver.findElement(By.linkText("Visa Services")).click();
-		action.moveToElement(driver.findElement(By.linkText("DEALS"))).contextClick().perform(); // Right click on DEALS tab
+		Thread.sleep(2000);
+		action.moveToElement(driver.findElement(By.linkText("Extra Seat"))).perform();
+		driver.findElement(By.linkText("Extra Seat")).click();
 		
 	}
 
