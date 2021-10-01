@@ -36,7 +36,7 @@ public class FramesTest {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
 		jsExecutor.executeScript("arguments[0].style.background='green'", driver.findElement(By.id("draggable"))); 
 		
-		driver.switchTo().defaultContent(); // Swicthed the WebDriver out from the frame
+		driver.switchTo().defaultContent(); // Switch the WebDriver out from the frame
 		driver.findElement(By.linkText("Autocomplete")).click();
 		driver.switchTo().frame(0);
 		//driver.findElement(By.id("tags")).sendKeys("Selenium");
