@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,9 +37,14 @@ public class RobotTest {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Robot robo = new Robot();
 		Thread.sleep(5000);
-		WebElement fileupload = driver.findElement(By.xpath("//input[@type='file']"));
-		fileupload.click();
-		String filepath = "C:\\Users\\Admin\\git\\Automation_Selenium\\Selenium_Tutorial\\files\\SampleFile.txt";
+		WebElement fileupload = driver.findElement(By.id("attach4589"));
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView(true);",fileupload);
+		//fileupload.click();
+		Thread.sleep(3000);
+		Actions action = new Actions(driver);
+		action.moveToElement(fileupload).click().perform();		
+		String filepath = "C:\\Users\\Admin\\git\\SeleniumProject\\SeleniumDemo\\files\\Data.txt";
 		StringSelection ss = new StringSelection(filepath); // It's a dummy path
 		Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
 		cb.setContents(ss, ss);
@@ -51,6 +57,7 @@ public class RobotTest {
 		robo.keyPress(KeyEvent.VK_ENTER);
 		robo.keyRelease(KeyEvent.VK_ENTER);
 		Thread.sleep(3000);
+		
 		
 	}
 

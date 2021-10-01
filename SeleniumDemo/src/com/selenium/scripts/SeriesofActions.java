@@ -3,16 +3,20 @@ package com.selenium.scripts;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class KeysTest {
+public class SeriesofActions {
 
 	WebDriver driver;
 
@@ -23,16 +27,18 @@ public class KeysTest {
 	}
 
 	@Test
-	public void keysMethods() throws InterruptedException {
+	public void buttonMethods() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://www.mycontactform.com/"); // Load a new web page in the current browser window. 
 		driver.manage().window().maximize(); // Maximize the browser window
-		
-		driver.findElement(By.id("user")).sendKeys("Naresh" + Keys.BACK_SPACE);
-		Thread.sleep(3000);
-		driver.findElement(By.id("pass")).sendKeys("Secure*123" + Keys.chord(Keys.CONTROL,"a"));
-		driver.findElement(By.id("user")).clear();
-		driver.findElement(By.id("user")).sendKeys(Keys.SHIFT + "gunjan");
+		WebElement username = driver.findElement(By.id("user"));
+		Actions builder = new Actions(driver);
+		Action action = builder.moveToElement(username).
+				keyDown(username,Keys.SHIFT).
+				sendKeys("naresh").sendKeys("babu").build(); // We use build method to perform a chain of actions
+		action.perform(); // We use perform method to perform a chain of actions which are build using action class method
+		Thread.sleep(2000);
+
 	}
 
 

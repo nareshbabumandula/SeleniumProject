@@ -33,8 +33,7 @@ public class DragTest {
 		driver.findElement(By.linkText("Draggable")).click();
 		driver.switchTo().frame(0);
 		WebElement drag = driver.findElement(By.id("draggable"));
-
-		action.dragAndDropBy(drag, 178, 165).perform();
+		action.dragAndDropBy(drag, 178, 165).perform(); // A convenience method for performing the actions without calling the build method
 		
 		
 	}
