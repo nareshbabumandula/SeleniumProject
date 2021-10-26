@@ -28,8 +28,7 @@ public class CheckboxTest {
 		driver.manage().window().maximize(); // Maximize the browser window
 		
 		driver.findElement(By.linkText("Sample Forms")).click();
-
-		
+	
 		WebElement chkMarketing = driver.findElement(By.xpath("//input[@name='email_to[]' and @value='0']"));
 		System.out.println("Type attribute value is : " + chkMarketing.getAttribute("type"));
 		System.out.println("Name attribute value is : " + chkMarketing.getAttribute("name"));
@@ -47,9 +46,7 @@ public class CheckboxTest {
 		List<WebElement> checkboxes = driver.findElements(By.name("email_to[]"));
 		System.out.println(checkboxes.size());
 		checkboxes.forEach((n)->n.click());
-		
 	}
-
 
 	@AfterClass
 	public void closeBrowser() throws InterruptedException {

@@ -1,5 +1,6 @@
 package com.selenium.scripts;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -51,12 +52,13 @@ public class ListboxTest {
 		select.selectByIndex(0); // Selects the 1st item from the dropdown listbox 
 		select.selectByVisibleText("Fourth Option"); // Selects the item based on the text of the list of list item
 		System.out.println("First selected option is : "+ select.getFirstSelectedOption().getText());
-	
+		
 			
 		List<WebElement> items = select.getOptions();
 		
 		for (WebElement value : items) {
 			System.out.println(value.getText());
+			
 		}
 		
 		// Lamba expression on List collection
