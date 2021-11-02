@@ -22,17 +22,17 @@ import org.testng.annotations.AfterSuite;
 @AfterMethod: The annotated method will be run after each test method.*/
 
 public class TestNGAnnotationsTest extends Common{
-  @Test(priority=0)
+  @Test(priority=0, groups= {"smoke", "regression"})
   public void searchProduct() {
 	  System.out.println("@Test : searchProduct method"); 
   }
   
-  @Test(priority=1)
+  @Test(priority=1, groups= {"regression"}, invocationCount=2)
   public void checkStock() {
 	  System.out.println("@Test : checkStock method"); 
   }
   
-  @BeforeMethod
+  @BeforeMethod(groups="regression")
   public void verifyProduct() {
 	  System.out.println("@BeforeMethod : verifyProduct method"); 
   }
@@ -42,17 +42,17 @@ public class TestNGAnnotationsTest extends Common{
 	  System.out.println("@AfterMethod : validateProduct method"); 
   }
  
-  @BeforeTest
+  @BeforeTest(groups={"smoke", "regression"})
   public void accessSite() {
 	  System.out.println("@BeforeTest : accessSite method"); 
   }
 
-  @AfterTest(alwaysRun=true)
+  @AfterTest(alwaysRun=true, groups= {"smoke"})
   public void logout() {
 	  System.out.println("@AfterTest : logout method"); 
   }
 
-  @BeforeSuite
+  @BeforeSuite()
   public void launchBrowser() {
 	 System.out.println("@BeforeSuite : LaunchBrowser method"); 
   }
