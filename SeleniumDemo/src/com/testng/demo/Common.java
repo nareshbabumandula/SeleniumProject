@@ -6,12 +6,12 @@ import org.testng.annotations.BeforeClass;
 
 public class Common {
 
-	 @BeforeClass
+	 @BeforeClass(groups= {"smoke", "regression"})
 	  public void login() {
 		  System.out.println("@BeforeClass : login method"); 
 	  }
 
-	  @AfterClass
+	  @AfterClass(groups="smoke")
 	  public void gotoHomepage() {
 		  System.out.println("@AfterClass : gotoHomepage method"); 
 		  Assert.assertEquals(false, true);
