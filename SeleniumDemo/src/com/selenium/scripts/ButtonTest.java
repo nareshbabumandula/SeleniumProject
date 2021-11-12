@@ -41,6 +41,7 @@ public class ButtonTest {
 		
 		// Click on image
 		btnLogin.click();
+
 	}
 
 
